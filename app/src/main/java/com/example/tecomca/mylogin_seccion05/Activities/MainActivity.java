@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
                         break;
                     case R.id.menu_information:
                         fragments.clear();
-                        fragment = new adsurdosFragment();
+                        fragment = new InforFragment();
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_registrar:

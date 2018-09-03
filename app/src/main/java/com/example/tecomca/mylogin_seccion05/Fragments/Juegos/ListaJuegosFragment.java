@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment.adsurdosFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CategoriesAdapter;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CatergorisFragment;
@@ -113,7 +114,29 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
     @Override
     public void onClickSelectedItem(Games juegos) {
         Log.i(TAG, "--->Games: name: " + juegos.getName());
-        comunViews.changeFragment(Reconoce1Fragment.newInstance(juegos.getId_game()));
+        Log.i(TAG, "--->Games: id: " + juegos.getId_game());
+
+        switch (juegos.getId_game()) {
+            case 1:
+                comunViews.changeFragment(Reconoce1Fragment.newInstance(juegos.getId_game()));
+                break;
+            case 2:
+                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                break;
+            case 3:
+                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                break;
+            case 4:
+                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                break;
+            case 5:
+                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                break;
+            case 6:
+                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                break;
+        }
+
     }
 
 }

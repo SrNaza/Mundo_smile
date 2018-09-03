@@ -2,6 +2,7 @@ package com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Model.Adsurdo;
+import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
 import com.example.tecomca.mylogin_seccion05.R;
+import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,11 +32,32 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     private ImageView imageViewAdsurdos;
     List<Adsurdo> listaAbsurdos;
 
+    int game;
+
+    private DatabaseHelper databaseHelper;
+
     public adsurdosFragment() {
         // Required empty public constructor
     }
 
     int turn = 1;
+
+    public static adsurdosFragment newInstance(int game) {
+        Bundle args = new Bundle();
+        adsurdosFragment fragment = new adsurdosFragment();
+        args.putInt("game", game);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        game = getArguments().getInt("game");
+        listaAbsurdos = new ArrayList<>();
+        databaseHelper = new DatabaseHelper(getContext());
+
+    }
 
 
     @Override
