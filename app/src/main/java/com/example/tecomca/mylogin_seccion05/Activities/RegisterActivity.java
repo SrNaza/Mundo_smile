@@ -27,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private Button mRegisterBtn;
     private Button mBackBtn;
+    private int tipo;
 
     private DatabaseHelper databaseHelper;
     private User user;
@@ -126,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String email = mEmailField.getText().toString().trim();
         String password = mPassField.getText().toString().trim();
         String name = mNameField.getText().toString().trim();
+        tipo = 2;
 
         if (login(email, password)) {
 //            goToMain();
@@ -134,6 +136,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 user.setName(name);
                 user.setEmail(email);
                 user.setPassword(password);
+                user.setType(tipo);
 
                 databaseHelper.addUser(user);
 

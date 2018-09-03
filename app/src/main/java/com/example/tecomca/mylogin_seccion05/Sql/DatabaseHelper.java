@@ -88,6 +88,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         values.put(COLUM_USER_NAME, user.getName());
         values.put(COLUM_USER_EMAIL, user.getEmail());
         values.put(COLUM_USER_PASSWORD, user.getPassword());
+        values.put(COLUM_USER_TYPE, user.getType());
 
         // insertar los valores de values en la base de datos
         db.insert(TABLE_USER, null, values);
