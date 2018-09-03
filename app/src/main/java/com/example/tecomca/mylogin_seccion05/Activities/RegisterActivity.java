@@ -40,34 +40,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-       // mAuth = FirebaseAuth.getInstance();
-
-//        mAuthListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                if (firebaseAuth.getCurrentUser() != null ){
-//                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-//                }
-//            }
-//        };
-
-//        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                startSingUp();
-//                Toast.makeText(RegisterActivity.this, "Algun dia funcionara XD", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        mBackBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//            }
-//        });
-
         initViews();
         initListeners();
         initObjects();
