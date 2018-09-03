@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,7 +74,7 @@ public class AlertFragment extends Fragment implements AlertAdapter.OnItemClickL
     }
 
     public void RecyclerViewUpdate() {
-        recyclerInstrutions.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerInstrutions.setLayoutManager(new LinearLayoutManager(getContext()));
 //        if (adapter == null) {
         //Log.i(TAG, "--->listadoAdapter null");
         instructions = new ArrayList<>();
@@ -85,7 +86,7 @@ public class AlertFragment extends Fragment implements AlertAdapter.OnItemClickL
     @Override
     public void onClickSelectedItem(Instructions instructions) {
         Log.i(TAG, "--->Category name: " + instructions.getDescription());
-        comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, instructions.getId()));
+       // comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, instructions.getId()));
     }
 
 

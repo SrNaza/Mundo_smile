@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment.adsurdosFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.InstructionsFragment.AlertFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CatergorisFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.InforFragment;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
         setContentView(R.layout.activity_main);
         setToolbar();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher_fox);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher_foxy);
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         nameFromIntent = getIntent().getStringExtra("EMAIL");
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
                         break;
                     case R.id.menu_information:
                         fragments.clear();
-                        fragment = new InforFragment();
+                        fragment = new adsurdosFragment();
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_registrar:

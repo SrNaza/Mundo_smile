@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Fragments.AdsurdosFragment.adsurdosFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e2e2e2">
+
+        <ImageView
+            android:id="@+id/imageViewAdsurdos"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <Button
+            android:id="@+id/btn_resp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="134dp"
+            android:layout_marginStart="72dp"
+            android:text="BIEN" />
+
+        <Button
+            android:id="@+id/btn_resp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btn_resp1"
+            android:layout_marginEnd="61dp"
+            android:text="MAL" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>
