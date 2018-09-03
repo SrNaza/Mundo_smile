@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
                 break;
             }
             case 2: {
+                // algo raro
                 this.navigationView.inflateMenu(R.menu.menu_guest);
                 break;
             }
