@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     tools:context=".Activities.RegisterActivity">
 
     <EditText
@@ -15,7 +16,8 @@
         android:layout_marginBottom="208dp"
         android:background="@drawable/edit_bg_register"
         android:ems="10"
-        android:hint="Email..."
+        android:backgroundTint="#fff"
+        android:hint="Correo Electronico..."
         android:inputType="textEmailAddress"
         android:padding="10dp" />
 
@@ -26,6 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="156dp"
+        android:backgroundTint="#fff"
         android:background="@drawable/edit_bg_register"
         android:ems="10"
         android:padding="10dp"
@@ -40,7 +43,8 @@
         android:background="@drawable/edit_bg_register"
         android:ems="10"
         android:padding="10dp"
-        android:hint="Name..."
+        android:backgroundTint="#fff"
+        android:hint="Nombre..."
         android:inputType="text" />
 
     <!--<EditText-->
@@ -87,5 +91,5 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        app:srcCompat="@drawable/people" />
+        app:srcCompat="@drawable/adduser" />
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
@@ -27,6 +28,7 @@ import java.util.List;
  */
 public class adsurdosFragment extends Fragment implements View.OnClickListener {
 
+    private TextView textViewPregunta;
     private Button btn_resp1;
     private Button btn_resp2;
     private ImageView imageViewAdsurdos;
@@ -73,6 +75,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
 
     private void bindUI(View view){
         //bindUI
+        textViewPregunta = (TextView) view.findViewById(R.id.textViewPregunta);
         btn_resp1 = (Button) view.findViewById(R.id.btn_resp1);
         btn_resp2 = (Button) view.findViewById(R.id.btn_resp2);
         imageViewAdsurdos = (ImageView) view.findViewById(R.id.imageViewAdsurdos);
@@ -109,5 +112,6 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
 
     public void changeQuestion(int number){
         imageViewAdsurdos.setImageResource(listaAbsurdos.get(number-1).getImage());
+        textViewPregunta.setText(listaAbsurdos.get(number).getQuestion());
     }
 }
