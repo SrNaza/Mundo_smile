@@ -4,6 +4,10 @@ import android.content.SharedPreferences;
 
 public class Util {
 
+    public static String getPlayerName(SharedPreferences prefecences){
+        return prefecences.getString("playerName", "");
+    }
+
     public static String getSessionName(SharedPreferences prefecences){
         return prefecences.getString("name", "");
     }
@@ -18,6 +22,13 @@ public class Util {
 
     public static int getSessionType(SharedPreferences prefecences) {
         return prefecences.getInt("type", 0);
+    }
+
+    public static void setPlayerName(SharedPreferences prefecences, String value) {
+        SharedPreferences.Editor editor = prefecences.edit();
+        editor.apply();
+        editor.putString("playerName", value);
+        editor.commit();
     }
 
     public static void setSessionName(SharedPreferences prefecences, String value) {

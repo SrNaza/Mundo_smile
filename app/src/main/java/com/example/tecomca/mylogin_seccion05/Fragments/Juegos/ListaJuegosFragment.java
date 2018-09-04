@@ -47,22 +47,6 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
         // Required empty public constructor
     }
 
-//    public void initListImagenes(){
-//        listFotos = new ArrayList<>();
-//        listFotos.add(R.drawable.kids);
-//        listFotos.add(R.drawable.buho);
-//        listFotos.add(R.drawable.friendship);
-//        listFotos.add(R.drawable.caras);
-//    }
-//
-//    public void initListNombres(){
-//        listNombres = new ArrayList<>();
-//        listNombres.add("Reconocer imagen");
-//        listNombres.add("Reconocer dias semanales");
-//        listNombres.add("Reconocer meses");
-//        listNombres.add("El dos mas dos");
-//    }
-
     public static ListaJuegosFragment newInstance(ComunViews cv, int category) {
         Bundle args = new Bundle();
         args.putParcelable("comun", cv);
@@ -84,27 +68,13 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_juegos, container, false);
         recyclerJuegos = view.findViewById(R.id.listJuegos);
-        // /initAll(view);
         RecyclerViewUpdate();
-//        initListImagenes();
-//        initListNombres();
-//        getDataFake();
         return view;
     }
-
-//    public void getDataFake() {
-//        List<Juegos> list = new ArrayList<>();
-//        for (int i = 0; i < 4; i++) {
-//            list.add(new Juegos(i, listNombres.get(i), listFotos.get(i)));
-//        }
-//        juegos = list;
-//        RecyclerViewUpdate();
-//    }
 
     public void RecyclerViewUpdate() {
         databaseHelper = new DatabaseHelper(getContext());
         recyclerJuegos.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        //Log.i(TAG, "--->listadoAdapter null");
         juegos = new ArrayList<>();
         adapter = new ListaJuegosAdapter(databaseHelper.loadGamesCategory(category), getContext());
         adapter.setOnItemClickListener(this);
@@ -113,9 +83,6 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
 
     @Override
     public void onClickSelectedItem(Games juegos) {
-        Log.i(TAG, "--->Games: name: " + juegos.getName());
-        Log.i(TAG, "--->Games: id: " + juegos.getId_game());
-
         switch (juegos.getId_game()) {
             case 1:
                 comunViews.changeFragment(Reconoce1Fragment.newInstance(juegos.getId_game()));

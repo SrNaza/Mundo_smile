@@ -67,13 +67,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         this.onItemClickListener = onItemClickListener;
     }
 
-    public void updateAll(List<Category> update) {
-        //Log.i(TAG,"--->updateAll "+ update.size());
-        listCategory.clear();
-        listCategory.addAll(listCategory.size(), update);
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout item;
