@@ -37,6 +37,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    //lovelyDialog
+    implementation 'com.yarolegovich:lovely-dialog:1.1.0'
+
 
     implementation 'com.android.support:cardview-v7:27.1.1'
 }
