@@ -16,11 +16,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.tecomca.mylogin_seccion05.Activities.MainActivity;
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Model.Adsurdo;
 import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
 import com.example.tecomca.mylogin_seccion05.R;
 import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
+import com.yarolegovich.lovelydialog.LovelyCustomDialog;
+import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,7 +46,8 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     List<Adsurdo> listaAbsurdos;
     int turn = 0;
     private boolean answer;
-    int score = 0;
+    int correcto = 0;
+    int incorrecto = 0;
 
     @BindView(R.id.imageViewAdsurdos) ImageView imagen;
 
@@ -94,6 +99,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
         btn_resp2 = (Button) view.findViewById(R.id.btn_resp2);
         listaAbsurdos = new ArrayList<>();
         generateFakeList();
+         //paso 2
     }
 
     private void generateFakeList() {
@@ -114,17 +120,19 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_resp1:
                 if(answer == true){
                     Toast.makeText(getActivity(),"CORRECTO,",Toast.LENGTH_SHORT).show();
+                    correcto++;
                     if(turn == prueba.answers.length){
-                        Toast.makeText(getActivity(),"TERMINO EL JUEGO",Toast.LENGTH_SHORT).show();
+                        showDialog();
                     }else{
                         changeQuestion();
                     }
 
                 } else{
 
-                    Toast.makeText(getActivity(),"CORRECTO,",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"INCORRECTO,",Toast.LENGTH_SHORT).show();
+                    incorrecto++;
                     if(turn == prueba.answers.length){
-                        Toast.makeText(getActivity(),"TERMINO EL JUEGO",Toast.LENGTH_SHORT).show();
+                        showDialog();
                     }else{
                         changeQuestion();
                     }
@@ -134,18 +142,20 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_resp2:
                 if(answer == false){
-                    Toast.makeText(getActivity(),"CORRECTO,",Toast.LENGTH_SHORT).show();
+                    correcto++;
+                    Toast.makeText(getActivity(),"CORRECTO",Toast.LENGTH_SHORT).show();
                     if(turn == prueba.answers.length){
-                        Toast.makeText(getActivity(),"TERMINO EL JUEGO",Toast.LENGTH_SHORT).show();
+                        showDialog();
                     }else{
                         changeQuestion();
                     }
 
                 } else{
 
-                    Toast.makeText(getActivity(),"INCORRECTO,",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"INCORRECTO",Toast.LENGTH_SHORT).show();
+                    incorrecto++;
                     if(turn == prueba.answers.length){
-                        Toast.makeText(getActivity(),"TERMINO EL JUEGO",Toast.LENGTH_SHORT).show();
+                        showDialog();
                     }else{
                         changeQuestion();
                     }
@@ -166,4 +176,38 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
         answer = listaAbsurdos.get(turn).isAnswer();
         turn++;
     }
+
+    public void showDialog(){
+        new LovelyStandardDialog(getContext())
+                .setTopColorRes(R.color.colorPrimary)
+                .setButtonsColorRes(R.color.colorAccent)
+                .setCancelable(false)
+                .setIcon(R.drawable.ic_action_name)
+                .setTitle("Estadisticas de la Partida")
+                .setMessageGravity(50)
+                .setMessage("Aciertos "+correcto+" - "+" Incorrectos "+incorrecto)
+                .setMessageGravity(50)
+                .setPositiveButton("Terminar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getContext(),"HIZO CLICK",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Reiniciar", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getContext(),"Reinicio Juego",Toast.LENGTH_SHORT).show();
+                        correcto = 0;
+                        incorrecto = 0;
+                        turn=0;
+                        changeQuestion();
+                    }
+                })
+                .show();
+
+    }
+
+
+
+
 }
