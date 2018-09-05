@@ -1,14 +1,18 @@
 package com.example.tecomca.mylogin_seccion05.Fragments.InstructionsFragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,7 +81,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            item = view.findViewById(R.id.tv_name);
+            item = view.findViewById(R.id.item);
             tv_name = view.findViewById(R.id.tv_name);
             iv_logo = view.findViewById(R.id.iv_image);
         }

@@ -182,7 +182,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 .setTopColorRes(R.color.colorPrimary)
                 .setButtonsColorRes(R.color.colorAccent)
                 .setCancelable(false)
-                .setIcon(R.drawable.bella)
+                //.setIcon(R.drawable.bella)
                 .setTitle("Estadisticas de la Partida")
                 .setMessageGravity(50)
                 .setMessage("Aciertos "+correcto+" - "+" Incorrectos "+incorrecto)
