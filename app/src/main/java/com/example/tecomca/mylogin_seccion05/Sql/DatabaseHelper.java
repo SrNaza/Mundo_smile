@@ -10,6 +10,7 @@ import com.example.tecomca.mylogin_seccion05.Model.Category;
 import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
 import com.example.tecomca.mylogin_seccion05.Model.Games;
 import com.example.tecomca.mylogin_seccion05.Model.Instructions;
+import com.example.tecomca.mylogin_seccion05.Model.Stadistics;
 import com.example.tecomca.mylogin_seccion05.Model.User;
 import com.example.tecomca.mylogin_seccion05.Utils.Util;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -31,6 +32,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String TABLE_INSTRUCTIONS = "instructions";
     private static final String TABLE_GAME = "games";
     private static final String TABLE_CHARACTERISTICS = "characteristics";
+    private static final String TABLE_STADISTICS = "stadistics";
 
     //Table users columns
     // User
@@ -63,6 +65,13 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String COLUM_CHARACTERISTICS_IMAGE = "image";
     private static final String COLUM_CHARACTERISTICS_ANSWERS = "answers";
     private static final String COLUM_CHARACTERISTICS_TRUE_ANSWER = "true_answer";
+
+    //Estadisticas
+    private static final String COLUM_STADISTICS_ID = "id_stadistics";
+    private static final String COLUM_STADISTICS_ID_GAME = "id_game";
+    private static final String COLUM_STADISTICS_NAME = "name_player";
+    private static final String COLUM_STADISTICS_BUENAS = "buenas";
+    private static final String COLUM_STADISTICS_MALAS = "malas";
 
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
 
@@ -274,6 +283,17 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         cursor.close();
         db.close();
         return intructions;
+    }
+
+    public void saveStadistics(Stadistics stadistics ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUM_STADISTICS_ID_GAME, stadistics.getId_game());
+        values.put(COLUM_STADISTICS_NAME, stadistics.getNamePlayer());
+        values.put(COLUM_STADISTICS_BUENAS, stadistics.getBuenas());
+        values.put(COLUM_STADISTICS_MALAS, stadistics.getMalas());
+        db.insert(TABLE_STADISTICS, null, values);
+        db.close();
     }
 
 //    public List<Category> checkImageCategories() {
