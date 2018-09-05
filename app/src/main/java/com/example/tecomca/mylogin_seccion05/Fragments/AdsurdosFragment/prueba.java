@@ -4,25 +4,38 @@ import com.example.tecomca.mylogin_seccion05.R;
 
 public class prueba {
 
-    Integer[] image = {
+    public static Integer[] images = {
+            R.drawable.emocional,
+            R.drawable.doctor,
+            R.drawable.friendship,
+            R.drawable.escolar,
             R.drawable.emocional,
             R.drawable.doctor,
             R.drawable.friendship,
             R.drawable.escolar
     };
 
-    public String[] question = {
-            "Pregunta 1",
-            "Pregunta 2",
-            "Pregunta 3",
-            "Pregunta 4"
+    public static String[] questions = {
+            "El avion se rie?",
+            "El perro habla",
+            "El nino camina",
+            "Los peces viven en el mar",
+            "El nino habla con el sol ",
+            "El pez pinta",
+            "El arbol nada",
+            "El caballo corre"
+
     };
 
-    String[] answer = {
-            "emocional",
-            "doctor",
-            "friendship",
-            "escolar"
+    public static boolean[] answers = {
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true
     };
 
 }
