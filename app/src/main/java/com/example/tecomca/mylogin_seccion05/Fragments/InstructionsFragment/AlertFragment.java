@@ -78,7 +78,7 @@ public class AlertFragment extends Fragment implements AlertAdapter.OnItemClickL
 
     @Override
     public void onClickSelectedItem(Instructions instructions) {
-        Log.i(TAG, "--->Category name: " + instructions.getDescription());
+        Log.i(TAG, "--->Instructions description: " + instructions.getDescription());
        // comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, instructions.getId()));
     }
 }

@@ -18,6 +18,14 @@ public class Stadistics {
 //        this.malas = malas;
     }
 
+    public Stadistics(int id, int id_game, String namePlayer, int buenas, int malas){
+        this.id = id;
+        this.id_game = id_game;
+        this.namePlayer = namePlayer;
+        this.buenas = buenas;
+        this.malas = malas;
+    }
+
     public int getId() {
         return id;
     }

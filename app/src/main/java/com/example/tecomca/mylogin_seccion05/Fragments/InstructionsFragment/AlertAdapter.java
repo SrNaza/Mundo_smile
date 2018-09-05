@@ -40,7 +40,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
     @NonNull
     @Override
     public AlertAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_categories, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_instructions, viewGroup, false);
         return new AlertAdapter.ViewHolder(view);
     }
 
@@ -66,6 +66,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
         if (listInstruction == null)
             return 0;
         else
+            Log.i("TAG","--->"+listInstruction.size());
             return listInstruction.size();
     }
 
@@ -75,15 +76,15 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ConstraintLayout item;
+        CardView item;
         TextView tv_name;
         ImageView iv_logo;
 
         public ViewHolder(View view) {
             super(view);
             item = view.findViewById(R.id.item);
-            tv_name = view.findViewById(R.id.tv_name);
-            iv_logo = view.findViewById(R.id.iv_image);
+            tv_name = view.findViewById(R.id.tv_names);
+            iv_logo = view.findViewById(R.id.iv_images);
         }
 
     }

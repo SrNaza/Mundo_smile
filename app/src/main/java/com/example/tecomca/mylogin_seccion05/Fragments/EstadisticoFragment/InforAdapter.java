@@ -39,20 +39,22 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
     @Override
     public InforAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_stadistics, viewGroup, false);
+        Log.i("TAG","Hola en el onCreateViewHolder");
         return new InforAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull InforAdapter.ViewHolder holder, final int position) {
 //        holder.tv_name.setText(this.categories.get(position).getName());
-        holder.tv_name.setText(listStadistics.get(position).getBuenas());
-        holder.card.setOnClickListener(new View.OnClickListener() {
+        holder.tv_name.setText(listStadistics.get(position).getNamePlayer());
+        holder.tv_buena.setText(listStadistics.get(position).getBuenas());
+        holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClickListener.onClickSelectedItem(listStadistics.get(position));
             }
         });
-        //Log.i("TAG","--->"+listStadistics.get(position).getImagen());
+        Log.i("TAG","--->"+listStadistics.get(position).getNamePlayer());
 //        Glide.with(context)
 //                .load(listStadistics.get(position).getImagen())
 //                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
@@ -73,16 +75,16 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout card;
+        ConstraintLayout item;
         TextView tv_name;
         TextView tv_buena;
 //        ImageView iv_logo;
 
         public ViewHolder(View view) {
             super(view);
-            card = view.findViewById(R.id.card_view);
-            tv_name = view.findViewById(R.id.textViewName);
-            tv_buena = view.findViewById(R.id.textViewBuenas);
+            item = view.findViewById(R.id.item_stadistics);
+            tv_name = view.findViewById(R.id.tv_name_stadistics);
+            tv_buena = view.findViewById(R.id.tv_buenas_stadistics);
         }
 
     }

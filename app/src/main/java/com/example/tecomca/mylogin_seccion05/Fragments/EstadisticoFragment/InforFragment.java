@@ -68,12 +68,14 @@ public class InforFragment extends Fragment implements InforAdapter.OnItemClickL
         databaseHelper = new DatabaseHelper(getContext());
         RecyclerViewUpdate();
         return view;
+
     }
 
     public void RecyclerViewUpdate() {
         recyclerStadistics.setLayoutManager(new LinearLayoutManager(getContext()));
         stadistics = new ArrayList<>();
         adapter = new InforAdapter(this.databaseHelper.getInstruction(), getContext());
+        Log.i(TAG, "ESTOY AQUI este es el adapter --> " + adapter);
         adapter.setOnItemClickListener(this);
         recyclerStadistics.setAdapter(adapter);
     }

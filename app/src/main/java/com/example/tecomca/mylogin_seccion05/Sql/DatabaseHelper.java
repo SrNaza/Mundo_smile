@@ -306,12 +306,12 @@ public class DatabaseHelper extends SQLiteAssetHelper {
                 null);
         if (cursor.moveToFirst()) {
             do {
-                Stadistics jefe = new Stadistics();
-//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID)),
-//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID_GAME)),
-//                        cursor.getString(cursor.getColumnIndex(COLUM_STADISTICS_NAME)),
-//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_BUENAS)),
-//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_MALAS)));
+                Stadistics jefe = new Stadistics(
+                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID)),
+                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID_GAME)),
+                        cursor.getString(cursor.getColumnIndex(COLUM_STADISTICS_NAME)),
+                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_BUENAS)),
+                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_MALAS)));
                 stadistics.add(jefe);
             } while (cursor.moveToNext());
         }

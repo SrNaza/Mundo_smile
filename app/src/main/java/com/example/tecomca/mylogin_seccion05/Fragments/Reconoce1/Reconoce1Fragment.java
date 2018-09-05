@@ -129,7 +129,7 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-//TODO Bug al terminarse los intentos y darle a varios botoes, al darle backpress Crashea
+//TODO Bug al terminarse los intentos y darle a varios botoes, al darle backpress Crashea o jugar una y al 3 intento backpress crashea
         switch (v.getId()) {
             case R.id.btn_newGame: {
                 loadGame();
