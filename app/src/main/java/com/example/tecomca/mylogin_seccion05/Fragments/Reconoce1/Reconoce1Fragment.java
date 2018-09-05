@@ -29,6 +29,7 @@ import java.util.List;
 
 public class Reconoce1Fragment extends Fragment implements View.OnClickListener {
 
+    // un push vale
     Button btn_opc1, btn_opc2, btn_opc3, btn_opc4, btn_opc5, btn_opc6, btn_back, btn_newGame;
     ImageView imgView;
     int game;
