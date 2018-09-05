@@ -3,14 +3,18 @@ package com.example.tecomca.mylogin_seccion05.Fragments.Juegos;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment.adsurdosFragment;
+import com.example.tecomca.mylogin_seccion05.Fragments.DiasSemana.DiasSemanaFragment;
+import com.example.tecomca.mylogin_seccion05.Fragments.MesesYearFragment.MesesYearFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CategoriesAdapter;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CatergorisFragment;
@@ -83,24 +87,35 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
 
     @Override
     public void onClickSelectedItem(Games juegos) {
+        //TODO Mostrar el nombre del juego en la toolbar dinamicamente y arreglar cuando cambia de juego no se limpia
         switch (juegos.getId_game()) {
             case 1:
                 comunViews.changeFragment(Reconoce1Fragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
                 break;
             case 2:
-                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+//                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
-                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                Log.e("onClick", "Numero de juego :" + juegos.getId_game());
+                comunViews.changeFragment(DiasSemanaFragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
                 break;
             case 4:
-                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                comunViews.changeFragment(MesesYearFragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
                 break;
             case 5:
                 comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
                 break;
             case 6:
-                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+//                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 7:
+//                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
         }
 

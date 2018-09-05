@@ -2,12 +2,28 @@ package com.example.tecomca.mylogin_seccion05.Model;
 
 public class Stadistics {
 
+    int id;
     int id_game;
     String namePlayer;
     int buenas;
     int malas;
 
     public Stadistics() {
+        //TODO Preguntar como haria aqui para obtener los datos guardados en reconocer
+//        int id, int id_game, String namePlayer, int buenas, int malas
+//        this.id = id;
+//        this.id_game = id_game;
+//        this.namePlayer = namePlayer;
+//        this.buenas = buenas;
+//        this.malas = malas;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId_game() {

@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class adsurdosFragment extends Fragment implements View.OnClickListener {
-
+    //TODO Guardar todo lo de absurdos games a sqlite
     private TextView textViewPregunta;
     private Button btn_resp1;
     private Button btn_resp2;

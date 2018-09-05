@@ -285,6 +285,41 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         return intructions;
     }
 
+
+    //TODO Lo mismo aqui hay confucion a la hora de llamar al constructor del modelo stadistic
+    public List<Stadistics> getStadistics() {
+        List<Stadistics> stadistics = new ArrayList<>();
+        String[] columns = {
+                COLUM_STADISTICS_ID,
+                COLUM_STADISTICS_ID_GAME,
+                COLUM_STADISTICS_NAME,
+                COLUM_STADISTICS_BUENAS,
+                COLUM_STADISTICS_MALAS
+        };
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_STADISTICS,
+                columns,
+                null,
+                null,
+                null,
+                null,
+                null);
+        if (cursor.moveToFirst()) {
+            do {
+                Stadistics jefe = new Stadistics();
+//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID)),
+//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID_GAME)),
+//                        cursor.getString(cursor.getColumnIndex(COLUM_STADISTICS_NAME)),
+//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_BUENAS)),
+//                        cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_MALAS)));
+                stadistics.add(jefe);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return stadistics;
+    }
+
     public void saveStadistics(Stadistics stadistics ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

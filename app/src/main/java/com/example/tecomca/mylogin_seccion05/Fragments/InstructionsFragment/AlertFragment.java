@@ -32,16 +32,9 @@ public class AlertFragment extends Fragment implements AlertAdapter.OnItemClickL
     private DatabaseHelper databaseHelper;
     private AlertAdapter adapter;
 
-
-    private List<String> nombres;
-    private List<Integer> images;
-    private List<String> listNombres;
     private List<Instructions> instructions;
 
-
-
     private final String TAG = AlertFragment.class.getSimpleName();
-
 
     public AlertFragment() {
         // Required empty public constructor
@@ -88,7 +81,4 @@ public class AlertFragment extends Fragment implements AlertAdapter.OnItemClickL
         Log.i(TAG, "--->Category name: " + instructions.getDescription());
        // comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, instructions.getId()));
     }
-
-
-
 }

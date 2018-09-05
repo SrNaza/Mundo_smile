@@ -19,10 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment.adsurdosFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.InstructionsFragment.AlertFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CatergorisFragment;
-import com.example.tecomca.mylogin_seccion05.Fragments.InforFragment;
+import com.example.tecomca.mylogin_seccion05.Fragments.EstadisticoFragment.InforFragment;
 import com.example.tecomca.mylogin_seccion05.R;
 import com.example.tecomca.mylogin_seccion05.Utils.ComunViews;
 import com.example.tecomca.mylogin_seccion05.Utils.Util;
@@ -62,30 +61,6 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
         toggle.syncState();
 
         chargeNavView();
-        // informacion del drawer si abre o cierra
-//        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-//            @Override
-//            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerOpened(@NonNull View drawerView) {
-//                Toast.makeText(MainActivity.this, "OPEN", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onDrawerClosed(@NonNull View drawerView) {
-//                Toast.makeText(MainActivity.this, "CLOSE", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onDrawerStateChanged(int newState) {
-//
-//            }
-//        });
 
 //        con este listener controlamos el navigation drawer
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -107,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
                         break;
                     case R.id.menu_information:
                         fragments.clear();
-                        fragment = new InforFragment();
+                        fragment = InforFragment.newInstance(comunViews);
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_registrar:
@@ -139,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
             }
         });
     }
+
+
+
 
     public void chargeNavView() {
         View view = this.navigationView.getHeaderView(0);

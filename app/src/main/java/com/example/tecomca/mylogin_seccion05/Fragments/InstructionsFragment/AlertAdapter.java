@@ -23,7 +23,6 @@ import java.util.List;
 
 public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> {
 
-
     private Context context;
     private List<Instructions> listInstruction;
     private AlertFragment onItemClickListener;
@@ -78,7 +77,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            item = view.findViewById(R.id.item);
+            item = view.findViewById(R.id.tv_name);
             tv_name = view.findViewById(R.id.tv_name);
             iv_logo = view.findViewById(R.id.iv_image);
         }

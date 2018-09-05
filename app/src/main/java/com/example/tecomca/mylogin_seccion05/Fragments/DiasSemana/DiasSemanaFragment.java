@@ -1,8 +1,8 @@
-package com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1;
+package com.example.tecomca.mylogin_seccion05.Fragments.DiasSemana;
+
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,14 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
-import com.example.tecomca.mylogin_seccion05.Model.Games;
 import com.example.tecomca.mylogin_seccion05.Model.Stadistics;
 import com.example.tecomca.mylogin_seccion05.R;
 import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
@@ -27,7 +26,7 @@ import com.example.tecomca.mylogin_seccion05.Utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reconoce1Fragment extends Fragment implements View.OnClickListener {
+public class DiasSemanaFragment extends Fragment implements View.OnClickListener{
 
     Button btn_opc1, btn_opc2, btn_opc3, btn_opc4, btn_opc5, btn_opc6, btn_back, btn_newGame;
     ImageView imgView;
@@ -46,13 +45,13 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
 
     private DatabaseHelper databaseHelper;
 
-    public Reconoce1Fragment() {
-        // Required empty public constructor
+    public DiasSemanaFragment() {
+
     }
 
-    public static Reconoce1Fragment newInstance(int game) {
+    public static DiasSemanaFragment newInstance(int game) {
         Bundle args = new Bundle();
-        Reconoce1Fragment fragment = new Reconoce1Fragment();
+        DiasSemanaFragment fragment = new DiasSemanaFragment();
         args.putInt("game", game);
         fragment.setArguments(args);
         return fragment;
@@ -69,7 +68,7 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_reconoce1, container, false);
+        View view = inflater.inflate(R.layout.fragment_dias_semana, container, false);
         initViews(view);
         initListeners();
         loadGame();
@@ -128,7 +127,7 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-//TODO Bug al terminarse los intentos y darle a varios botoes, al darle backpress Crashea
+
         switch (v.getId()) {
             case R.id.btn_newGame: {
                 loadGame();
@@ -219,7 +218,6 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                     break;
             }
             if (tries == 0) {
-                // TODO Aqui es donde dara error si en el constructor inicializo los atributos de la clase stadistics que necesito en database helper para get
                 Stadistics stadistics = new Stadistics();
                 stadistics.setId_game(actualGame.getId_game());
                 stadistics.setNamePlayer(Util.getPlayerName(prefs));
