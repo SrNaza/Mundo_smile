@@ -151,7 +151,6 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                     }
 
                 }
-                //Toast.makeText(getActivity(),"FALSO",Toast.LENGTH_SHORT).show();
                 break;
 
         }
