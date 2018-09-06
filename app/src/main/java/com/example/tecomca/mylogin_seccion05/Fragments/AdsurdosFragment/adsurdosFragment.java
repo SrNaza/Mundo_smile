@@ -1,6 +1,7 @@
 package com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -35,15 +36,13 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class adsurdosFragment extends Fragment implements View.OnClickListener {
     //TODO Guardar todo lo de absurdos games a sqlite
     private TextView textViewPregunta;
     private Button btn_resp1;
     private Button btn_resp2;
     List<Adsurdo> listaAbsurdos;
+    Intent intent;
     int turn = 0;
     private boolean answer;
     int correcto = 0;
@@ -190,6 +189,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 .setPositiveButton("Terminar", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        getFragmentManager().popBackStack();
                         Toast.makeText(getContext(),"HIZO CLICK",Toast.LENGTH_SHORT).show();
                     }
                 })
