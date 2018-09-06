@@ -10,6 +10,7 @@ public class Characteristics implements Parcelable{
     private byte[] image;
     private String answer;
     private String true_answer;
+    private int true_int;
 
     public Characteristics(int id_characteristics, int id_game, byte[] image, String answer, String true_answer) {
         this.id_characteristics = id_characteristics;
@@ -17,6 +18,7 @@ public class Characteristics implements Parcelable{
         this.image = image;
         this.answer = answer;
         this.true_answer = true_answer;
+        this.true_int = true_int;
     }
 
     public int getId_characteristics() {
@@ -58,6 +60,10 @@ public class Characteristics implements Parcelable{
     public void setTrue_answer(String true_answer) {
         this.true_answer = true_answer;
     }
+
+    public int getTrueInt() { return true_int; }
+
+    public void setTrueInt(int true_int) { this.true_int = true_int; }
 
     @Override
     public int describeContents() {

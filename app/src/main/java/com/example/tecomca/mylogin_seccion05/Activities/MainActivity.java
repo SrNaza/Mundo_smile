@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setToolbar();
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher_foxy);
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         nameFromIntent = getIntent().getStringExtra("EMAIL");
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

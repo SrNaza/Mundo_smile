@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,10 @@ import com.example.tecomca.mylogin_seccion05.Activities.MainActivity;
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Model.Adsurdo;
 import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
+import com.example.tecomca.mylogin_seccion05.Model.Stadistics;
 import com.example.tecomca.mylogin_seccion05.R;
 import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
+import com.example.tecomca.mylogin_seccion05.Utils.Util;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import com.yarolegovich.lovelydialog.LovelySaveStateHandler;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -39,29 +42,28 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class adsurdosFragment extends Fragment implements View.OnClickListener {
-    //TODO Guardar todo lo de absurdos games a sqlite
     private TextView textViewPregunta;
     private Button btn_resp1;
     private Button btn_resp2;
     List<Adsurdo> listaAbsurdos;
-    Intent intent;
+    int game;
+    List<Characteristics> games;
+    Characteristics actualGame;
+    String[] answers;
+    String trueAnswers;
     int turn = 0;
     private boolean answer;
+    int true_answer;
     int correcto = 0; //1 2
     int incorrecto = 0;
 
     @BindView(R.id.imageViewAdsurdos) ImageView imagen;
-
-    int game;
-
     private SharedPreferences prefs;
     private DatabaseHelper databaseHelper;
 
     public adsurdosFragment() {
         // Required empty public constructor
     }
-
-
 
     public static adsurdosFragment newInstance(int game) {
         Bundle args = new Bundle();
@@ -75,43 +77,41 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         game = getArguments().getInt("game");
+        games = new ArrayList<>();
         databaseHelper = new DatabaseHelper(getContext());
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_adsurdos, container, false);
         bindUI(view);
         ButterKnife.bind(this, view);
         initListeners();
+        loadGame();
         changeQuestion();
         return view;
     }
 
-
-
     private void bindUI(View view){
-        //bindUI
         textViewPregunta = (TextView) view.findViewById(R.id.textViewPregunta);
         btn_resp1 = (Button) view.findViewById(R.id.btn_resp1);
         btn_resp2 = (Button) view.findViewById(R.id.btn_resp2);
         listaAbsurdos = new ArrayList<>();
-        generateFakeList();
-         //paso 2
     }
 
-    private void generateFakeList() {
-        for(int i=0;i< prueba.answers.length;i++){
-            listaAbsurdos.add(new Adsurdo(prueba.questions[i],prueba.answers[i],prueba.images[i]));
-        }
+    private void loadGame(){
+        prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        games = databaseHelper.loadGame(game);
+        Log.e("se", "-----> El juego = " + games);
+        int random = (int) (Math.random() * games.size());
+        actualGame = this.games.get(random);
+        answers = games.get(random).getAnswer().split(",");
+        trueAnswers = games.get(random).getTrue_answer();
+        Glide.with(getContext())
+                .load(games.get(random).getImage())
+                .into(imagen);
     }
-
-//    private void loadGame(){
-//        prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-//    }
 
     private void initListeners(){
         btn_resp1.setOnClickListener(this);
@@ -120,65 +120,63 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        int numero = Integer.parseInt(trueAnswers);
         switch (v.getId()){
             case R.id.btn_resp1:
-                if(answer == true){
+                if(numero == 1){
                     Toast.makeText(getActivity(),"CORRECTO",Toast.LENGTH_SHORT).show();
                     correcto++;
-                    if(turn == prueba.answers.length){
+                    if(turn == games.size()){
                         showDialog();
                     }else{
                         changeQuestion();
                     }
-
                 } else{
-
                     Toast.makeText(getActivity(),"INCORRECTO",Toast.LENGTH_SHORT).show();
                     incorrecto++;
-                    if(turn == prueba.answers.length){
+                    if(turn == games.size()){
                         showDialog();
                     }else{
                         changeQuestion();
                     }
-
                 }
-
                 break;
             case R.id.btn_resp2:
-                if(answer == false){
+                if(numero == 0){
                     correcto++;
                     Toast.makeText(getActivity(),"CORRECTO",Toast.LENGTH_SHORT).show();
-                    if(turn == prueba.answers.length){
+                    if(turn == games.size()){
                         showDialog();
                     }else{
                         changeQuestion();
                     }
-
                 } else{
-
                     Toast.makeText(getActivity(),"INCORRECTO",Toast.LENGTH_SHORT).show();
                     incorrecto++;
-                    if(turn == prueba.answers.length){
+                    if(turn == games.size()){
                         showDialog();
                     }else{
                         changeQuestion();
                     }
-
                 }
                 break;
-
         }
-
     }
 
     public void changeQuestion(){
         Glide.with(getContext())
-                .load(listaAbsurdos.get(turn).getImage())
+                .load(games.get(turn).getImage())
                 .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.advertencia))
                 .into(imagen);
-        textViewPregunta.setText(listaAbsurdos.get(turn).getQuestion());
-        answer = listaAbsurdos.get(turn).isAnswer();
+        textViewPregunta.setText(games.get(turn).getAnswer());
+        trueAnswers = games.get(turn).getTrue_answer();
         turn++;
+    }
+
+    public void resetStats(){
+        correcto = 0;
+        incorrecto = 0;
+        turn=0;
     }
 
     public void showDialog(){
@@ -186,7 +184,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 .setTopColorRes(R.color.colorPrimary)
                 .setButtonsColorRes(R.color.colorAccent)
                 .setCancelable(false)
-                //.setIcon(R.drawable.bella)
+                .setIcon(R.drawable.ic_action_name)
                 .setTitle("Estadisticas de la Partida")
                 .setMessageGravity(50)
                 .setMessage("Aciertos "+correcto+" - "+" Incorrectos "+incorrecto)
@@ -196,20 +194,31 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                     public void onClick(View v) {
                         getFragmentManager().popBackStack();
                         Toast.makeText(getContext(),"HIZO CLICK",Toast.LENGTH_SHORT).show();
+                        Stadistics stadistics = new Stadistics();
+                        stadistics.setId_game(actualGame.getId_game());
+                        stadistics.setNamePlayer(Util.getPlayerName(prefs));
+                        stadistics.setBuenas(correcto);
+                        stadistics.setMalas(incorrecto);
+                        databaseHelper.saveStadistics(stadistics);
+                        Log.e("se", "Se guardo en la base datos");
                     }
                 })
                 .setNegativeButton("Reiniciar", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(getContext(),"Reinicio Juego",Toast.LENGTH_SHORT).show();
-                        correcto = 0;
-                        incorrecto = 0;
-                        turn=0;
+                        Stadistics stadistics = new Stadistics();
+                        stadistics.setId_game(actualGame.getId_game());
+                        stadistics.setNamePlayer(Util.getPlayerName(prefs));
+                        stadistics.setBuenas(correcto);
+                        stadistics.setMalas(incorrecto);
+                        databaseHelper.saveStadistics(stadistics);
+                        Log.e("se", "Se guardo en la base datos");
+                        resetStats();
                         changeQuestion();
                     }
                 })
                 .show();
-
     }
 
 }

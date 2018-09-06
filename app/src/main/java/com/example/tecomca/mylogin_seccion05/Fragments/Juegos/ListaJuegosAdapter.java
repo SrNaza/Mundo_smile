@@ -3,7 +3,6 @@ package com.example.tecomca.mylogin_seccion05.Fragments.Juegos;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tecomca.mylogin_seccion05.Model.Games;
-import com.example.tecomca.mylogin_seccion05.Model.Juegos;
 import com.example.tecomca.mylogin_seccion05.R;
 
 import java.util.List;
@@ -40,7 +38,6 @@ public class ListaJuegosAdapter extends RecyclerView.Adapter<ListaJuegosAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-//        holder.tv_name.setText(this.categories.get(position).getName());
         holder.tv_name.setText(listJuegos.get(position).getName());
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +62,6 @@ public class ListaJuegosAdapter extends RecyclerView.Adapter<ListaJuegosAdapter.
     }
 
     public void updateAll(List<Games> update) {
-        //Log.i(TAG,"--->updateAll "+ update.size());
         listJuegos.clear();
         listJuegos.addAll(listJuegos.size(), update);
         notifyDataSetChanged();

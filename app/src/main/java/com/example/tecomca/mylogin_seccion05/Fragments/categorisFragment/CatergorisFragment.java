@@ -15,13 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tecomca.mylogin_seccion05.Fragments.Juegos.ListaJuegosFragment;
 import com.example.tecomca.mylogin_seccion05.Model.Category;
+import com.example.tecomca.mylogin_seccion05.Model.Stadistics;
 import com.example.tecomca.mylogin_seccion05.R;
 import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
 import com.example.tecomca.mylogin_seccion05.Utils.ComunViews;
 import com.example.tecomca.mylogin_seccion05.Utils.Util;
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +45,6 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
     private final String TAG = CatergorisFragment.class.getSimpleName();
 
     public CatergorisFragment() {
-        // Required empty public constructor
     }
 
     public static CatergorisFragment newInstance(ComunViews cv) {
@@ -79,29 +83,54 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
     @Override
     public void onClickSelectedItem(final Category category) {
         Log.i(TAG, "--->Category name: " + category.getName());
-        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_name, null);
-        dialogBuilder.setView(dialogView);
-        final EditText et_name = dialogView.findViewById(R.id.et_name);
-        TextView tv_cancelar = dialogView.findViewById(R.id.tv_cancel);
-        TextView tv_save = dialogView.findViewById(R.id.tv_save);
-        final AlertDialog alertDialog = dialogBuilder.create();
-        tv_cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        tv_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                Util.setPlayerName(prefs, et_name.getText().toString());
-                comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, category.getId()));
-            }
-        });
-        alertDialog.show();
+        showDialog(category);
+//        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+//        LayoutInflater inflater = this.getLayoutInflater();
+//        View dialogView = inflater.inflate(R.layout.dialog_name, null);
+//        dialogBuilder.setView(dialogView);
+//        final EditText et_name = dialogView.findViewById(R.id.et_name);
+//        TextView tv_cancelar = dialogView.findViewById(R.id.tv_cancel);
+//        TextView tv_save = dialogView.findViewById(R.id.tv_save);
+//        final AlertDialog alertDialog = dialogBuilder.create();
+//        tv_cancelar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//        tv_save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.dismiss();
+//                Util.setPlayerName(prefs, et_name.getText().toString());
+//                comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, category.getId()));
+//            }
+//        });
+//        alertDialog.show();
+    }
+
+    public void showDialog(final Category category){
+        new LovelyTextInputDialog(getContext())
+                .setTopColorRes(R.color.colorPrimary)
+                .setCancelable(false)
+                .setIcon(R.drawable.ic_action_name)
+                .setTitle("Ingrese Nombre")
+                .setInputFilter("Por favor introducir nombre", new LovelyTextInputDialog.TextFilter() {
+                    @Override
+                    public boolean check(String text) {
+                        return text.matches("\\w+");
+                    }
+                })
+                .setConfirmButton("Guardar", new LovelyTextInputDialog.OnTextInputConfirmListener() {
+                    @Override
+                    public void onTextInputConfirmed(String text) {
+                        Util.setPlayerName(prefs, text);
+                        comunViews.changeFragment(ListaJuegosFragment.newInstance(comunViews, category.getId()));
+                        Toast.makeText(getContext(), "Nombre guardado", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
     }
 
 }

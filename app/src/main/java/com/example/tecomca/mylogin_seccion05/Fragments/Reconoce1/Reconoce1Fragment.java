@@ -29,7 +29,6 @@ import java.util.List;
 
 public class Reconoce1Fragment extends Fragment implements View.OnClickListener {
 
-    // un push vale
     Button btn_opc1, btn_opc2, btn_opc3, btn_opc4, btn_opc5, btn_opc6, btn_back, btn_newGame;
     ImageView imgView;
     int game;
@@ -142,7 +141,6 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                 break;
             }
         }
-
         if (this.tries > 0) {
             this.tries--;
             this.tv_tries.setText(String.valueOf(this.tries));
@@ -227,7 +225,6 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                     break;
             }
             if (tries == 0) {
-                // TODO Aqui es donde dara error si en el constructor inicializo los atributos de la clase stadistics que necesito en database helper para get
                 Stadistics stadistics = new Stadistics();
                 stadistics.setId_game(actualGame.getId_game());
                 stadistics.setNamePlayer(Util.getPlayerName(prefs));
