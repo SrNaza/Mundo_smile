@@ -60,11 +60,7 @@ public class InforFragment extends Fragment implements InforAdapter.OnItemClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_infor, container, false);
-        //prefs = getContext().getSharedPreferences("Preferences", MODE_PRIVATE);
-//        textView = (TextView) view.findViewById(R.id.textViewSql);
-//        textView.setText("Welcome ".concat(Util.getSessionName(prefs)));
         recyclerStadistics = view.findViewById(R.id.listStadistics);
-        // /initAll(view);
         databaseHelper = new DatabaseHelper(getContext());
         RecyclerViewUpdate();
         return view;
@@ -74,7 +70,7 @@ public class InforFragment extends Fragment implements InforAdapter.OnItemClickL
     public void RecyclerViewUpdate() {
         recyclerStadistics.setLayoutManager(new LinearLayoutManager(getContext()));
         stadistics = new ArrayList<>();
-        adapter = new InforAdapter(this.databaseHelper.getInstruction(), getContext());
+        adapter = new InforAdapter(this.databaseHelper.getStadistics(), getContext());
         Log.i(TAG, "ESTOY AQUI este es el adapter --> " + adapter);
         adapter.setOnItemClickListener(this);
         recyclerStadistics.setAdapter(adapter);

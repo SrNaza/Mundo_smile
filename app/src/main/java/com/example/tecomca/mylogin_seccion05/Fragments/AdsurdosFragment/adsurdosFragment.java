@@ -1,7 +1,9 @@
 package com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -45,13 +47,14 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     Intent intent;
     int turn = 0;
     private boolean answer;
-    int correcto = 0;
+    int correcto = 0; //1 2
     int incorrecto = 0;
 
     @BindView(R.id.imageViewAdsurdos) ImageView imagen;
 
     int game;
 
+    private SharedPreferences prefs;
     private DatabaseHelper databaseHelper;
 
     public adsurdosFragment() {
@@ -73,7 +76,6 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         game = getArguments().getInt("game");
         databaseHelper = new DatabaseHelper(getContext());
-
     }
 
 
@@ -107,6 +109,9 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+//    private void loadGame(){
+//        prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+//    }
 
     private void initListeners(){
         btn_resp1.setOnClickListener(this);
@@ -118,7 +123,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_resp1:
                 if(answer == true){
-                    Toast.makeText(getActivity(),"CORRECTO,",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"CORRECTO",Toast.LENGTH_SHORT).show();
                     correcto++;
                     if(turn == prueba.answers.length){
                         showDialog();
@@ -128,7 +133,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
 
                 } else{
 
-                    Toast.makeText(getActivity(),"INCORRECTO,",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"INCORRECTO",Toast.LENGTH_SHORT).show();
                     incorrecto++;
                     if(turn == prueba.answers.length){
                         showDialog();
@@ -169,7 +174,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     public void changeQuestion(){
         Glide.with(getContext())
                 .load(listaAbsurdos.get(turn).getImage())
-                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
+                .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.advertencia))
                 .into(imagen);
         textViewPregunta.setText(listaAbsurdos.get(turn).getQuestion());
         answer = listaAbsurdos.get(turn).isAnswer();
@@ -206,8 +211,5 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 .show();
 
     }
-
-
-
 
 }

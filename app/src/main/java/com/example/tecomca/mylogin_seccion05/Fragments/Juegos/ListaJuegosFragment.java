@@ -87,7 +87,6 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
 
     @Override
     public void onClickSelectedItem(Games juegos) {
-        //TODO Mostrar el nombre del juego en la toolbar dinamicamente y arreglar cuando cambia de juego no se limpia
         switch (juegos.getId_game()) {
             case 1:
                 comunViews.changeFragment(Reconoce1Fragment.newInstance(juegos.getId_game()));
@@ -108,6 +107,7 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
                 break;
             case 5:
                 comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
                 break;
             case 6:
 //                comunViews.changeFragment(adsurdosFragment.newInstance(juegos.getId_game()));

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.tecomca.mylogin_seccion05.Model.Category;
 import com.example.tecomca.mylogin_seccion05.Model.Characteristics;
@@ -67,7 +68,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String COLUM_CHARACTERISTICS_TRUE_ANSWER = "true_answer";
 
     //Estadisticas
-    private static final String COLUM_STADISTICS_ID = "id_stadistics";
+    private static final String COLUM_STADISTICS_ID = "id_stadistic";
     private static final String COLUM_STADISTICS_ID_GAME = "id_game";
     private static final String COLUM_STADISTICS_NAME = "name_player";
     private static final String COLUM_STADISTICS_BUENAS = "buenas";
@@ -285,8 +286,6 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         return intructions;
     }
 
-
-    //TODO Lo mismo aqui hay confucion a la hora de llamar al constructor del modelo stadistic
     public List<Stadistics> getStadistics() {
         List<Stadistics> stadistics = new ArrayList<>();
         String[] columns = {

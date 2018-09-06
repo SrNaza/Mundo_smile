@@ -51,7 +51,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         Log.i("TAG","--->"+listCategory.get(position).getImagen());
         Glide.with(context)
                 .load(listCategory.get(position).getImagen())
-                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
+                .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.advertencia))
                 .into(holder.iv_logo);
     }
 

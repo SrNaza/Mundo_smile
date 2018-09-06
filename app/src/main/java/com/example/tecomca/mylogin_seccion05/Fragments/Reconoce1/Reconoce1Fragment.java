@@ -78,6 +78,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
     }
 
     public void loadGame() {
+        buenas.clear();
+        malas.clear();
         prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         this.tv_tries.setText("3");
         this.tries = 3;
@@ -129,7 +131,6 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-//TODO Bug al terminarse los intentos y darle a varios botoes, al darle backpress Crashea o jugar una y al 3 intento backpress crashea
         switch (v.getId()) {
             case R.id.btn_newGame: {
                 loadGame();
@@ -154,7 +155,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc1.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -166,7 +168,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc2.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -178,7 +181,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc3.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -190,7 +194,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc4.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -202,7 +207,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc5.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -214,7 +220,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                             break;
                         } else {
                             btn_opc6.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            this.malas.add(1);
+                            break;
                         }
                     }
                     break;
@@ -230,7 +237,8 @@ public class Reconoce1Fragment extends Fragment implements View.OnClickListener 
                 Log.e("se", "Se guardo en la base datos");
             }
         } else {
-            Toast.makeText(getContext(), "se te acabo los intentos", Toast.LENGTH_SHORT).show();
+            if (getView() != null)
+                Toast.makeText(getContext(), "se te acabo los intentos", Toast.LENGTH_SHORT).show();
         }
     }
 

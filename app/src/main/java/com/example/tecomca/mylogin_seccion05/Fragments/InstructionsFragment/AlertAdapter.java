@@ -57,7 +57,7 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
         Log.i("TAG","--->"+listInstruction.get(position).getImagen());
         Glide.with(context)
                 .load(listInstruction.get(position).getImagen())
-                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
+                .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.advertencia))
                 .into(holder.iv_logo);
     }
 

@@ -24,7 +24,6 @@ public class prueba {
             "El pez pinta",
             "El arbol nada",
             "El caballo corre"
-
     };
 
     public static boolean[] answers = {

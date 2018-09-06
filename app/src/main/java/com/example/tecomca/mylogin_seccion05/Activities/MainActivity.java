@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
 
     @Override
     public void changeFragment(Fragment fragment) {
-
+        getSupportActionBar().setSubtitle(" ");
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragment);
         if (!this.fragments.isEmpty()) {
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
         }
         this.fragments.add(fragment.getClass().getName());
         ft.commit();
-//
+        Log.e("asda", "Tamaño lista: " + getSupportFragmentManager().getBackStackEntryCount());
 //        getSupportFragmentManager()
 //                .beginTransaction()
 //                .replace(R.id.content_frame, fragment)
@@ -168,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements ComunViews {
 
     @Override
     public void onBackPressed() {
+        getSupportActionBar().setSubtitle(" ");
         if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
         } else {

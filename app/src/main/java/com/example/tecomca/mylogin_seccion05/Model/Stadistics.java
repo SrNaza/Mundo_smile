@@ -9,7 +9,6 @@ public class Stadistics {
     int malas;
 
     public Stadistics() {
-        //TODO Preguntar como haria aqui para obtener los datos guardados en reconocer
 //        int id, int id_game, String namePlayer, int buenas, int malas
 //        this.id = id;
 //        this.id_game = id_game;

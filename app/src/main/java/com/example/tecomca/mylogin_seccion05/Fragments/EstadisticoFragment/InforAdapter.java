@@ -1,8 +1,11 @@
 package com.example.tecomca.mylogin_seccion05.Fragments.EstadisticoFragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +26,9 @@ import com.example.tecomca.mylogin_seccion05.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> {
 
@@ -30,7 +36,7 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
     private List<Stadistics> listStadistics;
     private InforFragment onItemClickListener;
 
-    public InforAdapter(List<Instructions> listInstruction, Context context) {
+    public InforAdapter(List<Stadistics> listStadistics, Context context) {
         this.listStadistics = listStadistics;
         this.context = context;
     }
@@ -43,11 +49,13 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
         return new InforAdapter.ViewHolder(view);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull InforAdapter.ViewHolder holder, final int position) {
 //        holder.tv_name.setText(this.categories.get(position).getName());
         holder.tv_name.setText(listStadistics.get(position).getNamePlayer());
-        holder.tv_buena.setText(listStadistics.get(position).getBuenas());
+        holder.tv_buena.setText(String.valueOf(listStadistics.get(position).getBuenas()));
+        holder.tv_mala.setText(String.valueOf(listStadistics.get(position).getMalas()));
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,17 +63,14 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
             }
         });
         Log.i("TAG","--->"+listStadistics.get(position).getNamePlayer());
-//        Glide.with(context)
-//                .load(listStadistics.get(position).getImagen())
-//                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
-//                .into(holder.iv_logo);
+        Glide.with(context)
+                .load(R.id.imageViewBackground)
+                .apply(new RequestOptions().placeholder(R.drawable.doctor).error(R.drawable.kids))
+                .into(holder.iv_logo);
     }
 
     @Override
     public int getItemCount() {
-        if (listStadistics == null)
-            return 0;
-        else
             return listStadistics.size();
     }
 
@@ -75,16 +80,20 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ConstraintLayout item;
+        @BindView(R.id.card_view)
+        CardView item;
+        @BindView(R.id.textViewName)
         TextView tv_name;
+        @BindView(R.id.textViewBuenas)
         TextView tv_buena;
-//        ImageView iv_logo;
+        @BindView(R.id.textViewMalas)
+        TextView tv_mala;
+        @BindView(R.id.imageViewBackground)
+        ImageView iv_logo;
 
         public ViewHolder(View view) {
             super(view);
-            item = view.findViewById(R.id.item_stadistics);
-            tv_name = view.findViewById(R.id.tv_name_stadistics);
-            tv_buena = view.findViewById(R.id.tv_buenas_stadistics);
+            ButterKnife.bind(this, view);
         }
 
     }
