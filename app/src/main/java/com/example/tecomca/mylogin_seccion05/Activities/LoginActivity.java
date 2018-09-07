@@ -19,7 +19,7 @@ import com.example.tecomca.mylogin_seccion05.Sql.DatabaseHelper;
 import com.example.tecomca.mylogin_seccion05.Utils.Util;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-//deadline
+//deadlin
     private SharedPreferences prefs;
 
     private EditText editTextEmail;
