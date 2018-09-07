@@ -184,7 +184,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                 .setTopColorRes(R.color.colorPrimary)
                 .setButtonsColorRes(R.color.colorAccent)
                 .setCancelable(false)
-                .setIcon(R.drawable.ic_action_name)
+                //.setIcon(R.drawable.ic_action_name)
                 .setTitle("Estadisticas de la Partida")
                 .setMessageGravity(50)
                 .setMessage("Aciertos "+correcto+" - "+" Incorrectos "+incorrecto)
@@ -197,6 +197,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                         Stadistics stadistics = new Stadistics();
                         stadistics.setId_game(actualGame.getId_game());
                         stadistics.setNamePlayer(Util.getPlayerName(prefs));
+                        stadistics.setNameGame(Util.getNameGame(prefs));
                         stadistics.setBuenas(correcto);
                         stadistics.setMalas(incorrecto);
                         databaseHelper.saveStadistics(stadistics);
@@ -210,6 +211,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                         Stadistics stadistics = new Stadistics();
                         stadistics.setId_game(actualGame.getId_game());
                         stadistics.setNamePlayer(Util.getPlayerName(prefs));
+                        stadistics.setNameGame(Util.getNameGame(prefs));
                         stadistics.setBuenas(correcto);
                         stadistics.setMalas(incorrecto);
                         databaseHelper.saveStadistics(stadistics);

@@ -24,6 +24,28 @@ public class Util {
         return prefecences.getInt("type", 0);
     }
 
+    public static String getNameGame(SharedPreferences prefecences) {
+        return prefecences.getString("NameGame", "");
+    }
+
+//    public static String getImageGame(SharedPreferences prefecences) {
+//        return prefecences.getString("ImageGame", "");
+//    }
+//
+//    public static void setImageGame(SharedPreferences prefecences, String value) {
+//        SharedPreferences.Editor editor = prefecences.edit();
+//        editor.apply();
+//        editor.putString("ImageGame", value);
+//        editor.commit();
+//    }
+
+    public static void setNameGame(SharedPreferences prefecences, String value) {
+        SharedPreferences.Editor editor = prefecences.edit();
+        editor.apply();
+        editor.putString("NameGame", value);
+        editor.commit();
+    }
+
     public static void setPlayerName(SharedPreferences prefecences, String value) {
         SharedPreferences.Editor editor = prefecences.edit();
         editor.apply();

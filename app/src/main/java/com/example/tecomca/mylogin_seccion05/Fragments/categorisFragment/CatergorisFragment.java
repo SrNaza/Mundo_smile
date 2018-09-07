@@ -83,7 +83,31 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
     @Override
     public void onClickSelectedItem(final Category category) {
         Log.i(TAG, "--->Category name: " + category.getName());
-        showDialog(category);
+        //showDialog(category);
+        switch (category.getId()) {
+            case 1:
+                showDialog(category);
+                break;
+            case 2:
+                showDialog(category);
+                break;
+            case 3:
+                showDialog(category);
+                break;
+            case 4:
+                showDialog(category);
+                break;
+            case 5:
+                Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 6:
+                Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 7:
+                Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
 //        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
 //        LayoutInflater inflater = this.getLayoutInflater();
 //        View dialogView = inflater.inflate(R.layout.dialog_name, null);
@@ -113,7 +137,7 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
         new LovelyTextInputDialog(getContext())
                 .setTopColorRes(R.color.colorPrimary)
                 .setCancelable(false)
-                .setIcon(R.drawable.ic_action_name)
+                //.setIcon(R.drawable.ic_action_name)
                 .setTitle("Ingrese Nombre")
                 .setInputFilter("Por favor introducir nombre", new LovelyTextInputDialog.TextFilter() {
                     @Override

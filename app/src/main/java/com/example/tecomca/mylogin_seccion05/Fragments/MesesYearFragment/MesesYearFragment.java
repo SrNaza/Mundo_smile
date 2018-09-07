@@ -33,11 +33,11 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
     int game;
     List<Characteristics> games;
     Characteristics actualGame;
+    Characteristics actualImage;
     String[] answers;
     String[] trueAnswers;
-
-    List<Integer> buenas = new ArrayList<>();
-    List<Integer> malas = new ArrayList<>();
+    int buenas;
+    int malas;
 
     TextView tv_tries;
     int tries;
@@ -76,12 +76,17 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
     }
 
     public void loadGame() {
+//        buenas.clear();
+//        malas.clear();
+        buenas = 0;
+        malas= 0;
         prefs = getContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         this.tv_tries.setText("3");
         this.tries = 3;
         games = databaseHelper.loadGame(game);
         int random = (int) (Math.random() * games.size());
         actualGame = this.games.get(random);
+        actualImage = this.games.get(random);
         answers = games.get(random).getAnswer().split(",");
         trueAnswers = games.get(random).getTrue_answer().split(",");
         btn_opc1.setText(answers[0]);
@@ -90,12 +95,12 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
         btn_opc4.setText(answers[3]);
         btn_opc5.setText(answers[4]);
         btn_opc6.setText(answers[5]);
-        btn_opc1.setBackgroundColor(getResources().getColor(R.color.gray));
-        btn_opc2.setBackgroundColor(getResources().getColor(R.color.gray));
-        btn_opc3.setBackgroundColor(getResources().getColor(R.color.gray));
-        btn_opc4.setBackgroundColor(getResources().getColor(R.color.gray));
-        btn_opc5.setBackgroundColor(getResources().getColor(R.color.gray));
-        btn_opc6.setBackgroundColor(getResources().getColor(R.color.gray));
+        btn_opc1.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
+        btn_opc2.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
+        btn_opc3.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
+        btn_opc4.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
+        btn_opc5.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
+        btn_opc6.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_games));
         Glide.with(getContext())
                 .load(games.get(random).getImage())
                 .into(imgView);
@@ -139,7 +144,6 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
                 break;
             }
         }
-
         if (this.tries > 0) {
             this.tries--;
             this.tv_tries.setText(String.valueOf(this.tries));
@@ -147,72 +151,102 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
                 case R.id.btn_ans_1:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc1.getText().toString())) {
-                            btn_opc1.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc1.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc1.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            btn_opc1.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                            if (i == 2) {
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
                 case R.id.btn_ans_2:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc2.getText().toString())) {
-                            btn_opc2.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc2.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc2.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            btn_opc2.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                            if (i == 2) {
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
                 case R.id.btn_ans_3:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc3.getText().toString())) {
-                            btn_opc3.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc3.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc3.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            btn_opc3.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                            if (i == 2) {
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
                 case R.id.btn_ans_4:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc4.getText().toString())) {
-                            btn_opc4.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc4.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc4.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            btn_opc4.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                            if (i == 2) {
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
                 case R.id.btn_ans_5:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc5.getText().toString())) {
-                            btn_opc5.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc5.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc5.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            btn_opc5.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                            if (i == 2) {
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
                 case R.id.btn_ans_6:
                     for (int i = 0; i < trueAnswers.length; i++) {
                         if (trueAnswers[i].equals(btn_opc6.getText().toString())) {
-                            btn_opc6.setBackgroundColor(getResources().getColor(R.color.green));
-                            this.buenas.add(1);
+                            btn_opc6.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_true));
+                            buenas ++;
+                            Log.e("se", "Se guardo en la base datos buenas: " + buenas);
                             break;
                         } else {
-                            btn_opc6.setBackgroundColor(getResources().getColor(R.color.red));
-                            this.malas.add(0);
+                            if (i == 2) {
+                                btn_opc6.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_game_answer_false));
+                                malas ++;
+                                Log.e("se", "Se guardo en la base datos malas: " + malas);
+                                break;
+                            }
                         }
                     }
                     break;
@@ -220,14 +254,17 @@ public class MesesYearFragment extends Fragment implements View.OnClickListener 
             if (tries == 0) {
                 Stadistics stadistics = new Stadistics();
                 stadistics.setId_game(actualGame.getId_game());
+                stadistics.setImage(actualImage.getImage());
                 stadistics.setNamePlayer(Util.getPlayerName(prefs));
-                stadistics.setBuenas(this.buenas.size());
-                stadistics.setMalas(this.malas.size());
+                stadistics.setNameGame(Util.getNameGame(prefs));
+                stadistics.setBuenas(buenas);
+                stadistics.setMalas(malas);
                 databaseHelper.saveStadistics(stadistics);
                 Log.e("se", "Se guardo en la base datos");
             }
         } else {
-            Toast.makeText(getContext(), "se te acabo los intentos", Toast.LENGTH_SHORT).show();
+            if (getView() != null)
+                Toast.makeText(getContext(), "se te acabo los intentos", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -54,7 +54,7 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull InforAdapter.ViewHolder holder, final int position) {
 //        holder.tv_name.setText(this.categories.get(position).getName());
         holder.tv_name.setText(listStadistics.get(position).getNamePlayer());
-        //holder.tv_game_name.setText(listStadistics.get(position).());
+        holder.tv_game_name.setText(listStadistics.get(position).getNameGame());
         holder.tv_buena.setText(String.valueOf(listStadistics.get(position).getBuenas()));
         holder.tv_mala.setText(String.valueOf(listStadistics.get(position).getMalas()));
         holder.item.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +63,9 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
                 onItemClickListener.onClickSelectedItem(listStadistics.get(position));
             }
         });
-        Log.i("TAG","--->"+listStadistics.get(position).getNamePlayer());
         Glide.with(context)
                 .load(R.id.imageViewBackground)
-                .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.advertencia))
+                .apply(new RequestOptions().placeholder(R.drawable.carga).error(R.drawable.stadistics))
                 .into(holder.iv_logo);
     }
 
@@ -85,8 +84,8 @@ public class InforAdapter extends RecyclerView.Adapter<InforAdapter.ViewHolder> 
         CardView item;
         @BindView(R.id.textViewName)
         TextView tv_name;
-//        @BindView(R.id.textViewGameName)
-//        TextView tv_game_name;
+        @BindView(R.id.textViewNameGame)
+        TextView tv_game_name;
         @BindView(R.id.textViewBuenas)
         TextView tv_buena;
         @BindView(R.id.textViewMalas)

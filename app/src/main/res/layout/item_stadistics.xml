@@ -31,19 +31,58 @@
             android:layout_weight="0.60"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView_Name_Game"
+                android:text="Juego: "
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/textViewGameName"-->
-                <!--android:hint="Juego: "-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="0dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_weight="0.3"-->
-                <!--android:gravity="center" />-->
+            <TextView
+                android:id="@+id/textView_Name"
+                android:text="Nombre: "
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/textView_Buenas"
+                android:text="Correctos: "
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/textView_Malas"
+                android:text="Incorrectos: "
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.60"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewNameGame"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textViewName"
-                android:hint="Jugador: "
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -52,7 +91,6 @@
 
             <TextView
                 android:id="@+id/textViewBuenas"
-                android:hint="Correctos: "
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -60,7 +98,6 @@
                 android:gravity="center" />
             <TextView
                 android:id="@+id/textViewMalas"
-                android:hint="Incorrectos: "
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"

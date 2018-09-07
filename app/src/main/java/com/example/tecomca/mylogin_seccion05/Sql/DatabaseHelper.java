@@ -16,6 +16,7 @@ import com.example.tecomca.mylogin_seccion05.Model.User;
 import com.example.tecomca.mylogin_seccion05.Utils.Util;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +74,8 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String COLUM_STADISTICS_NAME = "name_player";
     private static final String COLUM_STADISTICS_BUENAS = "buenas";
     private static final String COLUM_STADISTICS_MALAS = "malas";
+    private static final String COLUM_STADISTICS_NAME_GAME = "name_game";
+    private static final String COLUM_STADISTICS_IMAGE_GAME = "image_game";
 
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
 
@@ -292,6 +295,8 @@ public class DatabaseHelper extends SQLiteAssetHelper {
                 COLUM_STADISTICS_ID,
                 COLUM_STADISTICS_ID_GAME,
                 COLUM_STADISTICS_NAME,
+                COLUM_STADISTICS_NAME_GAME,
+                COLUM_STADISTICS_IMAGE_GAME,
                 COLUM_STADISTICS_BUENAS,
                 COLUM_STADISTICS_MALAS
         };
@@ -309,6 +314,8 @@ public class DatabaseHelper extends SQLiteAssetHelper {
                         cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID)),
                         cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_ID_GAME)),
                         cursor.getString(cursor.getColumnIndex(COLUM_STADISTICS_NAME)),
+                        cursor.getString(cursor.getColumnIndex(COLUM_STADISTICS_NAME_GAME)),
+                        cursor.getBlob(cursor.getColumnIndex(COLUM_STADISTICS_IMAGE_GAME)),
                         cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_BUENAS)),
                         cursor.getInt(cursor.getColumnIndex(COLUM_STADISTICS_MALAS)));
                 stadistics.add(jefe);
@@ -324,6 +331,8 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         ContentValues values = new ContentValues();
         values.put(COLUM_STADISTICS_ID_GAME, stadistics.getId_game());
         values.put(COLUM_STADISTICS_NAME, stadistics.getNamePlayer());
+        values.put(COLUM_STADISTICS_NAME_GAME, stadistics.getNameGame());
+        values.put(COLUM_STADISTICS_IMAGE_GAME, stadistics.getImage());
         values.put(COLUM_STADISTICS_BUENAS, stadistics.getBuenas());
         values.put(COLUM_STADISTICS_MALAS, stadistics.getMalas());
         db.insert(TABLE_STADISTICS, null, values);

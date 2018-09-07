@@ -71,7 +71,6 @@ public class InforFragment extends Fragment implements InforAdapter.OnItemClickL
         recyclerStadistics.setLayoutManager(new LinearLayoutManager(getContext()));
         stadistics = new ArrayList<>();
         adapter = new InforAdapter(this.databaseHelper.getStadistics(), getContext());
-        Log.i(TAG, "ESTOY AQUI este es el adapter --> " + adapter);
         adapter.setOnItemClickListener(this);
         recyclerStadistics.setAdapter(adapter);
     }

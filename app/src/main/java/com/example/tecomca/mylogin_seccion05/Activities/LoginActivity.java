@@ -37,29 +37,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bindUI();
 
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-//        setCredentialsIfExist();
-
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//            }
-//        });
-
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String email = editTextEmail.getText().toString();
-//                String password = editTextPassword.getText().toString();
-//                //verifyFromSQLite();
-//                if (login(email, password)) {
-//                    goToMain();
-//                    saveOnPreferences(email, password);
-//                }
-//            }
-//        });
         initObjects();
         initListeners();
     }
@@ -148,7 +125,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = editTextPassword.getText().toString();
 
         if (login(email, password)) {
-//            goToMain();
             if (databaseHelper.checkUser(email,password)){
                 if (this.switchRemember.isChecked()) {
                     Util.setSessionEmail(prefs, this.editTextEmail.getText().toString());
@@ -157,11 +133,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent accountIntent = new Intent (LoginActivity.this, MainActivity.class);
                 accountIntent.putExtra("EMAIL", email);
                 startActivity(accountIntent);
-//                emptyInputEditText();
             }else{
                 Toast.makeText(this, "Wrong Email or Password", Toast.LENGTH_LONG).show();
             }
-//            saveOnPreferences(email, password);
         }
     }
 

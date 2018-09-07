@@ -25,7 +25,9 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="106dp"
             android:layout_marginStart="67dp"
-            android:text="BIEN" />
+            android:text="BIEN"
+            android:layout_marginLeft="67dp"
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:id="@+id/btn_resp2"
@@ -34,18 +36,20 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/btn_resp1"
             android:layout_marginEnd="61dp"
-            android:text="MAL" />
+            android:text="MAL"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="61dp" />
 
         <TextView
             android:id="@+id/textViewPregunta"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="190dp"
-            android:text="Aqui va una pregunta?" />
+            android:gravity="center"
+            android:text="Aqui va una pregunta?"
+            android:textSize="20dp" />
 
 
     </RelativeLayout>

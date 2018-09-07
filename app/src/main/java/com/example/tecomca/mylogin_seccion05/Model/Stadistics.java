@@ -5,6 +5,8 @@ public class Stadistics {
     int id;
     int id_game;
     String namePlayer;
+    String nameGame;
+    private byte[] image;
     int buenas;
     int malas;
 
@@ -17,10 +19,12 @@ public class Stadistics {
 //        this.malas = malas;
     }
 
-    public Stadistics(int id, int id_game, String namePlayer, int buenas, int malas){
+    public Stadistics(int id, int id_game, String namePlayer, String nameGame, byte[] image,int buenas, int malas){
         this.id = id;
         this.id_game = id_game;
         this.namePlayer = namePlayer;
+        this.nameGame = nameGame;
+        this.image = image;
         this.buenas = buenas;
         this.malas = malas;
     }
@@ -49,6 +53,14 @@ public class Stadistics {
         this.namePlayer = namePlayer;
     }
 
+    public String getNameGame() {
+        return nameGame;
+    }
+
+    public void setNameGame(String nameGame) {
+        this.nameGame= nameGame;
+    }
+
     public int getBuenas() {
         return buenas;
     }
@@ -63,5 +75,13 @@ public class Stadistics {
 
     public void setMalas(int malas) {
         this.malas = malas;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
