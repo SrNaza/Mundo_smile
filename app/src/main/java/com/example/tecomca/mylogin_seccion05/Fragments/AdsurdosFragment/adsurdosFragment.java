@@ -54,7 +54,7 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
     int turn = 0;
     private boolean answer;
     int true_answer;
-    int correcto = 0; //1 2
+    int correcto = 0;
     int incorrecto = 0;
 
     @BindView(R.id.imageViewAdsurdos) ImageView imagen;
@@ -193,7 +193,6 @@ public class adsurdosFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onClick(View v) {
                         getFragmentManager().popBackStack();
-                        Toast.makeText(getContext(),"HIZO CLICK",Toast.LENGTH_SHORT).show();
                         Stadistics stadistics = new Stadistics();
                         stadistics.setId_game(actualGame.getId_game());
                         stadistics.setNamePlayer(Util.getPlayerName(prefs));

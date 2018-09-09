@@ -16,14 +16,14 @@ public class prueba {
     };
 
     public static String[] questions = {
-            "El avion se rie?",
-            "El perro habla",
-            "El nino camina",
-            "Los peces viven en el mar",
-            "El nino habla con el sol ",
-            "El pez pinta",
-            "El arbol nada",
-            "El caballo corre"
+            "¿El avion se rie?",
+            "¿El perro habla?",
+            "¿El niño camina?",
+            "¿Los peces viven en el mar?",
+            "¿El nino habla con el sol? ",
+            "¿El pez pinta?",
+            "¿El arbol nada?",
+            "¿El caballo corre?"
     };
 
     public static boolean[] answers = {

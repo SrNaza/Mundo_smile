@@ -6,6 +6,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     tools:context=".Fragments.categorisFragment.CatergorisFragment">
 
     <android.support.v7.widget.RecyclerView
