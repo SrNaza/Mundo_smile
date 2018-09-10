@@ -101,7 +101,7 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
                 Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
                 break;
             case 6:
-                Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
+                showDialog(category);
                 break;
             case 7:
                 Toast.makeText(getActivity(), "Categoria en Construccion", Toast.LENGTH_SHORT).show();
