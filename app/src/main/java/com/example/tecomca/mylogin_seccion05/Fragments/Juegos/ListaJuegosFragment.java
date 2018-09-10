@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.tecomca.mylogin_seccion05.Fragments.AdsurdosFragment.adsurdosFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.DiasSemana.DiasSemanaFragment;
+import com.example.tecomca.mylogin_seccion05.Fragments.EmocionalFragments.EmocionalFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.MesesYearFragment.MesesYearFragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.Reconoce1.Reconoce1Fragment;
 import com.example.tecomca.mylogin_seccion05.Fragments.categorisFragment.CategoriesAdapter;
@@ -119,11 +120,15 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
                 Util.setNameGame(prefs, juegos.getName());
                 break;
             case 6:
+                comunViews.changeFragment(EmocionalFragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
+                Util.setNameGame(prefs, juegos.getName());
                 Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
             case 7:
                 Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
+
         }
 
     }
