@@ -120,12 +120,30 @@ public class ListaJuegosFragment extends Fragment implements ListaJuegosAdapter.
                 Util.setNameGame(prefs, juegos.getName());
                 break;
             case 6:
-                comunViews.changeFragment(EmocionalFragment.newInstance(juegos.getId_game()));
-                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
-                Util.setNameGame(prefs, juegos.getName());
+//                comunViews.changeFragment(EmocionalFragment.newInstance(juegos.getId_game()));
+//                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
+//                Util.setNameGame(prefs, juegos.getName());
                 Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
             case 7:
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 8:
+                comunViews.changeFragment(EmocionalFragment.newInstance(juegos.getId_game()));
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(juegos.getName());
+                Util.setNameGame(prefs, juegos.getName());
+                //Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 9:
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 10:
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 11:
+                Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
+                break;
+            case 12:
                 Toast.makeText(getActivity(), "Juego en Construccion", Toast.LENGTH_SHORT).show();
                 break;
 
