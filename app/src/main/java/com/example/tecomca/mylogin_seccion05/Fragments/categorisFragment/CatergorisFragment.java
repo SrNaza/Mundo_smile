@@ -138,7 +138,7 @@ public class CatergorisFragment extends Fragment implements CategoriesAdapter.On
                 .setTopColorRes(R.color.colorPrimary)
                 .setCancelable(false)
                 //.setIcon(R.drawable.ic_action_name)
-                .setTitle("Ingrese Nombre")
+                .setTitle("Ingrese Nombre del Paciente")
                 .setInputFilter("Por favor introducir nombre", new LovelyTextInputDialog.TextFilter() {
                     @Override
                     public boolean check(String text) {

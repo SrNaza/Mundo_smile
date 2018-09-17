@@ -19,19 +19,11 @@
         <item
             android:id="@+id/menu_registrar"
             android:icon="@android:drawable/ic_menu_add"
-            android:title="Registrar Paciente"/>
+            android:title="Registrar Doctor"/>
     </group>
 
     <item android:title="Otras opciones">
         <menu>
-            <!--<item-->
-                <!--android:id="@+id/menu_opcion_1"-->
-                <!--android:icon="@android:drawable/ic_dialog_dialer"-->
-                <!--android:title="Opcion 1"/>-->
-            <!--<item-->
-                <!--android:id="@+id/menu_opcion_2"-->
-                <!--android:icon="@android:drawable/ic_dialog_dialer"-->
-                <!--android:title="Opcion 2"/>-->
             <item android:id="@+id/menu_logout"
                 android:title="Cerrar Sesion"
                 android:icon="@android:drawable/ic_menu_close_clear_cancel"
